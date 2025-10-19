@@ -12,6 +12,12 @@ interface Message {
   encrypted: boolean;
 }
 
+enum MessageType {
+  TEXT = 'text',
+  IMAGE = 'image',
+  FILE = 'file'
+}
+
 interface Socket {
   emit: (event: string, data: any) => void;
   on: (event: string, callback: (data: any) => void) => void;
