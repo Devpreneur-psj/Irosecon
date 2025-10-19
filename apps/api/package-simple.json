@@ -1,0 +1,16 @@
+{
+  "name": "@counseling/api",
+  "version": "1.0.0",
+  "description": "Simple Express API server for counseling platform",
+  "main": "simple-server.js",
+  "scripts": {
+    "start": "node simple-server.js",
+    "dev": "node simple-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.4",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0"
+  }
+}

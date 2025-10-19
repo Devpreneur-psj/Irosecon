@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iRoseCon - 상담센터 플랫폼</title>
+    <meta name="description" content="안전하고 익명의 상담 공간에서 전문가와 소통하세요. 모든 대화는 암호화되어 보호됩니다.">
+    <meta name="keywords" content="상담, 심리상담, 익명상담, 온라인상담, 전문가상담">
+    <link rel="canonical" href="https://www.irosecon.com/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="iRoseCon - 상담센터 플랫폼">
+    <meta property="og:description" content="안전하고 익명의 상담 공간에서 전문가와 소통하세요.">
+    <meta property="og:url" content="https://www.irosecon.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.irosecon.com/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Counseling Section */
+        .counseling {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .counseling-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .counseling-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .counseling-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .counseling-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            background: white;
+        }
+        
+        .form-button {
+            width: 100%;
+            background: white;
+            color: #f5576c;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .form-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 2rem;
+            color: #95a5a6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .counseling-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Chat Interface */
+        .chat-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            z-index: 2000;
+        }
+        
+        .chat-header {
+            background: #667eea;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+        
+        .message {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+        
+        .message.own {
+            background: #667eea;
+            color: white;
+            margin-left: auto;
+        }
+        
+        .message.other {
+            background: white;
+            color: #333;
+            border: 1px solid #e1e5e9;
+        }
+        
+        .chat-input {
+            padding: 1rem 2rem;
+            background: white;
+            border-top: 1px solid #e1e5e9;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+        
+        .chat-input button {
+            padding: 1rem 2rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        
+        .close-chat {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="logo">🌹 iRoseCon</a>
+            <ul class="nav-links">
+                <li><a href="#features">서비스</a></li>
+                <li><a href="#counseling">상담하기</a></li>
+                <li><a href="#about">소개</a></li>
+                <li><a href="#contact">문의</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>안전한 상담 공간</h1>
+            <p>전문가와 익명으로 소통하며, 모든 대화는 암호화되어 보호됩니다. 언제든지 편안하게 상담받으세요.</p>
+            <a href="#counseling" class="cta-button">지금 상담 시작하기</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>왜 iRoseCon을 선택해야 할까요?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>완전한 익명성</h3>
+                    <p>개인정보 없이도 안전하게 상담받을 수 있습니다. 모든 대화는 암호화되어 전송됩니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>유연한 시간</h3>
+                    <p>15분 기본 세션으로 시작하여 필요시 연장 가능합니다. 언제든지 편리한 시간에 상담받으세요.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗑️</div>
+                    <h3>자동 데이터 삭제</h3>
+                    <p>세션 종료 시 모든 대화 내용이 즉시 삭제되어 개인정보가 완전히 보호됩니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3>전문가 상담</h3>
+                    <p>경험이 풍부한 전문 상담사들이 24시간 대기하고 있습니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>어디서나 접속</h3>
+                    <p>PC, 모바일, 태블릿 어디서나 접속 가능한 반응형 웹사이트입니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>전 세계 서비스</h3>
+                    <p>전 세계 어디서나 접속 가능한 글로벌 상담 서비스입니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counseling Section -->
+    <section id="counseling" class="counseling">
+        <div class="container">
+            <div class="counseling-content">
+                <div class="counseling-text">
+                    <h2>지금 바로 상담을 시작하세요</h2>
+                    <p>간단한 정보 입력만으로 전문가와의 상담을 시작할 수 있습니다. 모든 과정은 안전하고 익명으로 진행됩니다.</p>
+                </div>
+                <div class="counseling-form">
+                    <form id="counselingForm">
+                        <div class="form-group">
+                            <label for="nickname">닉네임</label>
+                            <input type="text" id="nickname" placeholder="상담에서 사용할 닉네임을 입력하세요" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">룸 ID (선택사항)</label>
+                            <input type="text" id="roomId" placeholder="기존 룸 ID가 있다면 입력하세요">
+                        </div>
+                        <button type="submit" class="form-button">상담 시작하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="features">
+        <div class="container">
+            <h2>iRoseCon 소개</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #666; margin-bottom: 2rem;">
+                    iRoseCon은 개인의 프라이버시와 안전을 최우선으로 하는 온라인 상담 플랫폼입니다. 
+                    최첨단 암호화 기술을 통해 모든 대화를 보호하며, 세션 종료 시 자동으로 모든 데이터를 삭제합니다.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #666;">
+                    전 세계 어디서나 접속 가능하며, 전문 상담사들이 24시간 대기하고 있어 
+                    언제든지 편안하게 상담받을 수 있습니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>iRoseCon</h3>
+                    <p>안전하고 익명의 상담 공간에서 전문가와 소통하세요.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>서비스</h3>
+                    <p><a href="#features">주요 기능</a></p>
+                    <p><a href="#counseling">상담 시작</a></p>
+                    <p><a href="#about">서비스 소개</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>지원</h3>
+                    <p><a href="#contact">문의하기</a></p>
+                    <p><a href="/privacy">개인정보처리방침</a></p>
+                    <p><a href="/terms">이용약관</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>연락처</h3>
+                    <p>이메일: support@irosecon.com</p>
+                    <p>전화: 1588-0000</p>
+                    <p>주소: 서울시 강남구 테헤란로 123</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 iRoseCon. All rights reserved. | <a href="/privacy">개인정보처리방침</a> | <a href="/terms">이용약관</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Interface -->
+    <div id="chatContainer" class="chat-container">
+        <div class="chat-header">
+            <div>
+                <strong id="roomTitle">상담 룸</strong>
+                <div style="font-size: 0.9rem; opacity: 0.8;">참여자: <span id="participantCount">1</span>명</div>
+            </div>
+            <button class="close-chat" onclick="closeChat()">닫기</button>
+        </div>
+        <div class="chat-messages" id="messagesContainer">
+            <div class="message other">
+                <div style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 0.5rem;">시스템</div>
+                <div>상담이 시작되었습니다. 안전한 공간에서 자유롭게 대화하세요.</div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="메시지를 입력하세요...">
+            <button id="sendBtn">전송</button>
+        </div>
+    </div>
+
+    <script>
+        // API 서버 주소 (도메인 연결 시 변경 필요)
+        const API_BASE = 'https://api.irosecon.com';
+        
+        let currentRoom = null;
+        let currentUser = null;
+        
+        // 폼 제출 처리
+        document.getElementById('counselingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const nickname = document.getElementById('nickname').value.trim();
+            const roomId = document.getElementById('roomId').value.trim();
+            
+            if (!nickname) {
+                alert('닉네임을 입력해주세요.');
+                return;
+            }
+            
+            try {
+                // 룸 생성 또는 조회
+                let room;
+                if (roomId) {
+                    const response = await fetch(`${API_BASE}/rooms/${roomId}`);
+                    if (response.ok) {
+                        room = await response.json();
+                    } else {
+                        alert('룸을 찾을 수 없습니다. 새 룸을 생성합니다.');
+                        room = await createRoom();
+                    }
+                } else {
+                    room = await createRoom();
+                }
+                
+                // 룸 참여
+                const participant = await joinRoom(room.id, nickname);
+                
+                currentRoom = room;
+                currentUser = participant;
+                
+                // 채팅 화면 표시
+                document.getElementById('chatContainer').style.display = 'flex';
+                document.getElementById('roomTitle').textContent = `룸: ${room.id}`;
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('연결에 실패했습니다. 다시 시도해주세요.');
+            }
+        });
+        
+        // 룸 생성
+        async function createRoom() {
+            const response = await fetch(`${API_BASE}/rooms`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to create room');
+            }
+            
+            return await response.json();
+        }
+        
+        // 룸 참여
+        async function joinRoom(roomId, nickname) {
+            const response = await fetch(`${API_BASE}/rooms/${roomId}/join`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    nickname,
+                    publicKey: 'dummy-key',
+                }),
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to join room');
+            }
+            
+            const data = await response.json();
+            return data.participant;
+        }
+        
+        // 메시지 전송
+        document.getElementById('sendBtn').addEventListener('click', sendMessage);
+        document.getElementById('messageInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const content = input.value.trim();
+            
+            if (!content || !currentRoom) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/rooms/${currentRoom.id}/messages`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        content,
+                        senderId: currentUser.id,
+                        senderNickname: currentUser.nickname,
+                    }),
+                });
+                
+                if (response.ok) {
+                    const message = await response.json();
+                    addMessage(message, true);
+                    input.value = '';
+                }
+            } catch (error) {
+                console.error('Error sending message:', error);
+            }
+        }
+        
+        // 메시지 추가
+        function addMessage(message, isOwn = false) {
+            const messagesContainer = document.getElementById('messagesContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isOwn ? 'own' : 'other'}`;
+            
+            messageDiv.innerHTML = `
+                <div style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 0.5rem;">${message.senderNickname}</div>
+                <div>${message.content}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        // 채팅 닫기
+        function closeChat() {
+            document.getElementById('chatContainer').style.display = 'none';
+            currentRoom = null;
+            currentUser = null;
+        }
+        
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
