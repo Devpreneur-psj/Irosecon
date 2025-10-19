@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { DownloadIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { ArrowDownTrayIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 interface Message {
   id: string;
@@ -178,7 +178,7 @@ export default function LogManager({ roomId, messages }: LogManagerProps) {
               disabled={isExporting || logEntries.length === 0}
               className="px-3 py-1 rounded text-sm bg-gray-200 text-gray-700 hover:bg-gray-300 disabled:opacity-50"
             >
-              <DownloadIcon className="h-4 w-4 mr-1 inline" />
+              <ArrowDownTrayIcon className="h-4 w-4 mr-1 inline" />
               내보내기
             </button>
             
