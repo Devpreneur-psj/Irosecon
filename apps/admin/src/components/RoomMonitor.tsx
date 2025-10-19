@@ -10,6 +10,13 @@ interface Message {
   type: 'text' | 'image' | 'file';
   timestamp: Date;
   encrypted: boolean;
+  metadata?: {
+    fileInfo?: {
+      url: string;
+      name: string;
+      size: number;
+    };
+  };
 }
 
 enum MessageType {
