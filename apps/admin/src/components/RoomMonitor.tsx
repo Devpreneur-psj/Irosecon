@@ -1,8 +1,22 @@
 'use client';
 
-import { Message, MessageType, Socket } from '@/types';
-import { formatTime } from '@/ui/utils';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
+
+interface Message {
+  id: string;
+  senderNickname: string;
+  content: string;
+  type: 'text' | 'image' | 'file';
+  timestamp: Date;
+  encrypted: boolean;
+}
+
+interface Socket {
+  emit: (event: string, data: any) => void;
+  on: (event: string, callback: (data: any) => void) => void;
+  off: (event: string, callback: (data: any) => void) => void;
+}
 
 interface RoomMonitorProps {
   roomId: string;

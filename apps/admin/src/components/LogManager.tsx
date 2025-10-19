@@ -1,10 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Message } from '@/types';
-import { Button, Card, CardHeader, CardContent } from '@/ui';
-import { CryptoUtils } from '@/crypto';
 import { DownloadIcon, TrashIcon } from '@heroicons/react/24/outline';
+
+interface Message {
+  id: string;
+  senderNickname: string;
+  content: string;
+  type: 'text' | 'image' | 'file';
+  timestamp: Date;
+  encrypted: boolean;
+}
 
 interface LogManagerProps {
   roomId: string;
@@ -149,44 +155,45 @@ export default function LogManager({ roomId, messages }: LogManagerProps) {
 
   return (
     <div className="h-full flex flex-col">
-      <CardHeader className="pb-4">
+      <div className="pb-4">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold text-gray-900">
             로그 관리
           </h3>
           
           <div className="flex items-center space-x-2">
-            <Button
+            <button
               onClick={() => setIsLoggingEnabled(!isLoggingEnabled)}
-              variant={isLoggingEnabled ? 'danger' : 'secondary'}
-              size="sm"
+              className={`px-3 py-1 rounded text-sm ${
+                isLoggingEnabled 
+                  ? 'bg-red-500 text-white hover:bg-red-600' 
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
             >
               {isLoggingEnabled ? '로깅 중지' : '로깅 시작'}
-            </Button>
+            </button>
             
-            <Button
+            <button
               onClick={exportLogs}
               disabled={isExporting || logEntries.length === 0}
-              variant="secondary"
-              size="sm"
+              className="px-3 py-1 rounded text-sm bg-gray-200 text-gray-700 hover:bg-gray-300 disabled:opacity-50"
             >
-              <DownloadIcon className="h-4 w-4 mr-1" />
+              <DownloadIcon className="h-4 w-4 mr-1 inline" />
               내보내기
-            </Button>
+            </button>
             
-            <Button
+            <button
               onClick={clearLogs}
-              variant="danger"
-              size="sm"
+              className="px-3 py-1 rounded text-sm bg-red-500 text-white hover:bg-red-600"
             >
-              <TrashIcon className="h-4 w-4 mr-1" />
+              <TrashIcon className="h-4 w-4 mr-1 inline" />
               삭제
-            </Button>
+            </button>
           </div>
         </div>
-      </CardHeader>
+      </div>
 
-      <CardContent className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto">
         <div className="space-y-2">
           {logEntries.length === 0 ? (
             <div className="text-center text-gray-500 py-8">
@@ -222,7 +229,7 @@ export default function LogManager({ roomId, messages }: LogManagerProps) {
             ))
           )}
         </div>
-      </CardContent>
+      </div>
     </div>
   );
 }
