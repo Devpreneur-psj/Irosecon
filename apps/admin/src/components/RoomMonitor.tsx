@@ -63,12 +63,13 @@ export default function RoomMonitor({ roomId, messages, socket }: RoomMonitorPro
         );
       
       case MessageType.IMAGE:
+        const imageUrl = message.metadata?.fileInfo?.url;
         return (
           <div className="space-y-2">
             <div className="text-sm text-blue-600">📷 이미지</div>
-            {message.metadata.fileInfo && (
+            {imageUrl && (
               <img
-                src={message.metadata.fileInfo.url}
+                src={imageUrl}
                 alt="Uploaded image"
                 className="max-w-xs rounded-lg"
               />
@@ -81,7 +82,7 @@ export default function RoomMonitor({ roomId, messages, socket }: RoomMonitorPro
           <div className="space-y-2">
             <div className="text-sm text-blue-600">📎 파일</div>
             <div className="text-sm text-gray-600">
-              {message.metadata.fileInfo?.name || '파일'}
+              {message.metadata?.fileInfo?.name || '파일'}
             </div>
           </div>
         );
