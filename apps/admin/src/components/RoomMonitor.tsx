@@ -2,12 +2,14 @@
 
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
+import { MessageType } from '@counseling/types';
+import { Button } from '@counseling/ui';
 
 interface Message {
   id: string;
   senderNickname: string;
   content: string;
-  type: 'text' | 'image' | 'file';
+  type: MessageType;
   timestamp: Date;
   encrypted: boolean;
   metadata?: {
@@ -17,12 +19,6 @@ interface Message {
       size: number;
     };
   };
-}
-
-enum MessageType {
-  TEXT = 'text',
-  IMAGE = 'image',
-  FILE = 'file'
 }
 
 interface Socket {

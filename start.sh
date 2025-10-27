@@ -67,7 +67,7 @@ fi
 
 print_success "필수 도구 확인 완료"
 
-# 2. Redis 실행
+# 2. Redis 실행./
 print_status "Redis 서버 시작 중..."
 if ! pgrep -x "redis-server" > /dev/null; then
     if [[ "$OSTYPE" == "darwin"* ]]; then
