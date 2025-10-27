@@ -22,7 +22,9 @@
     "@heroicons/react": "^2.0.18",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.0.0",
-    "react-hot-toast": "^2.4.1"
+    "react-hot-toast": "^2.4.1",
+    "@counseling/types": "*",
+    "@counseling/ui": "*"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
